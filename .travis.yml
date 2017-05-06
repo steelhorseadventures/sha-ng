@@ -1,0 +1,26 @@
+sudo: false
+language: node_js
+before_install:
+- gem install sass compass
+node_js:
+- iojs
+before_script:
+- npm install -g bower grunt-cli generator-angular generator-karma grunt-karma yo
+- bower install
+script:
+- grunt build
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: "./publish.sh"
+  on:
+    branch: master
+    condition: "$TRAVIS_PULL_REQUEST = false"
+env:
+  global:
+  - GIT_NAME: Travis-CI
+  - GIT_EMAIL: travis.ci.build@gmail.com
+  - GH_REF: github.com/steelhorseadventures/steelhorseadventures.github.io.git
+  - GH_PAGES_BRANCH: master
+  - GH_PAGES_CNAME: steelhorseadventures.com
+  - secure: "rOtsr8tjB/50X3Pr/l6gztzYEj0ibiuHOofcIawnXeSCdyJaaohnn7ZP8ux3T+L+AdC5trk96nabewWS4haHFI6mqLByWfv/HkrJAlpwBAsv3m75po07/V06a0z96dw4r/AAyLNLxvQkrZx1pgTv5rYhYGuM8TsRFuH7CwpScb3G/JdVlJCvWWMtJjX2c1DK0kygOesJ86drpogWa2jnGjShMnhIx5Yg5GORnqjaVGQ1nFdvc8Y7R5Ty6p5igl0vkTN1R6RpAXp15CkJZM0JKXfSDfFa5vQmWuvKljYUcswI5JHI49Uq3Z7Lwod65TPdd2NoDvLYXSAtMTebFgGFujSHsJgUZPlQ2ht4M0k0aCBpNNAf52iX28naUUtMb1IzhAMq5VYCbYTbGTizQlRRpyr3dIKXL6Arqbicdw9SecH00a5jiNp4AB+7rgZLwryk8qHnJdn+ykANnEzhu3wziYhoUuF3EoSzajJ6282/d2LNg0TdI+610v72tx9BeWd9VQMdfFUNVYafgTC65+bsmD1yiX2kWn0DKkWHoS1vXjSvJK86tI1j9vvNbHPVLHyfsFfxBSvYqHbEOI7pI9L4Rj26CqcOATINDINrhcWSP+TfedZUOQgakvDIR9l/PWIjGA68l/DELcybJkXkvbnZSwxgdxc4gJ7sQFn6qGsbWbU="
