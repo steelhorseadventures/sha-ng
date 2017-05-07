@@ -13,8 +13,14 @@
       <p class="small text-muted" ng-repeat="waypoint in thing.waypoints">
         <i class="glyphicon glyphicon-time"></i>
         {{waypoint.time}}
-        <i class="glyphicon glyphicon-map-marker"></i>
-        {{waypoint.place}}
+        <a href="{{waypoint.url}}" ng-show="waypoint.url">
+          <i class="glyphicon glyphicon-map-marker"></i>
+          {{waypoint.place}}
+        </a>
+        <span ng-hide="waypoint.url">
+          <i class="glyphicon glyphicon-map-marker"></i>
+          {{waypoint.place}}
+        </span>
       </p>
       <p><a href="https://www.facebook.com/rob.thijssen/posts/{{thing.facebook}}" ng-show="thing.facebook">facebook</a></p>
     </div>
