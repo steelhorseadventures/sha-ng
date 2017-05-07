@@ -12,18 +12,15 @@ angular.module('steelhorseadventuresApp')
     $scope.things = [];
     thingApi.query({org: 'steelhorseadventures', repo: 'sha-content', file: 'things.json'}, function (thingList) {
       for (var i in thingList) {
-        if (!(thingList[i].hide) && !!(thingList[i].date)) {
+        if (!(thingList[i].hide) && !!(thingList[i].id)) {
           $scope.things.push({
-            date: new Date(thingList[i].date),
+            title: thingList[i].title,
+            waypoints: thingList[i].waypoints,
             summary: thingList[i].description,
-            url: thingList[i].url
+            map: thingList[i].map,
+            facebook: thingList[i].facebook
           });
         }
       }
-      $scope.things.sort(function(a, b) {
-        a = new Date(a.date);
-        b = new Date(b.date);
-        return a>b ? -1 : a<b ? 1 : 0;
-      });
     });
   });

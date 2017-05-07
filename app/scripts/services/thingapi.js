@@ -10,8 +10,10 @@
 angular.module('steelhorseadventuresApp')
   .factory('thingApi', function ($resource) {
     var thingsUrl = 'https://raw.githubusercontent.com/:org/:repo/master/:file';
+    var min = Math.ceil(min);
+    var max = Math.floor(max);
     return $resource(
-      thingsUrl,
+      thingsUrl + '?' + (Math.floor(Math.random() * (max - min)) + min),
       {
         org: '@_org',
         repo: '@_repo',
@@ -19,7 +21,7 @@ angular.module('steelhorseadventuresApp')
       },
       {
         get: {
-          url: thingsUrl
+          url: thingsUrl 
         },
         query: {
           isArray: true

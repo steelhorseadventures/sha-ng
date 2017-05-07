@@ -1,36 +1,33 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-</div>
-
-<div>
-  <ul class="timeline">
-    <li ng-repeat="thing in things">
-      <div class="timeline-panel">
-        <div class="timeline-heading">
-          <h4 class="timeline-title">
-            {{thing.summary}}
-          </h4>
-          <p class="small text-muted">
-            <i class="glyphicon glyphicon-time"></i>
-            <span>{{thing.date | date : format : shortDate}}</span>
-          </p>
-        </div>
-        <div class="timeline-body">
-          <p ng-show="thing.description">
-            {{thing.description}}
-          </p>
-          <ul ng-show="thing.files">
-            <li ng-repeat="file in thing.files">
-              <span>{{file.filename}}</span>
-            </li>
-          </ul>
-          <ul ng-show="thing.tags" class="list-inline">
-            <li ng-repeat="tag in thing.tags">
-              <span class="badge">{{tag}}</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </li>
-  </ul>
+<div ng-repeat="thing in things | orderBy:'id':true">
+  <div class="timeline-panel">
+    <div class="timeline-heading">
+      <h4 ng-show="thing.title">
+        {{thing.title}}
+      </h4>
+      <h5>
+        {{thing.map.distance.value / 1000 | number:1}} kilometres / {{thing.map.distance.value * 0.000621371 | number:1}} miles
+      </h4>
+      <p ng-show="thing.summary && (thing.title != thing.summary)">
+        {{thing.summary}}
+      </p>
+      <p class="small text-muted" ng-repeat="waypoint in thing.waypoints">
+        <i class="glyphicon glyphicon-time"></i>
+        {{waypoint.time}}
+        <i class="glyphicon glyphicon-map-marker"></i>
+        {{waypoint.place}}
+      </p>
+      <p><a href="https://www.facebook.com/rob.thijssen/posts/{{thing.facebook}}" ng-show="thing.facebook">facebook</a></p>
+    </div>
+    <div class="timeline-body">
+      <p ng-show="thing.description">
+        {{thing.description}}
+      </p>
+      <leaflet id="{{thing.id}}" ng-show="thing.map" lf-center="thing.map.centre" paths="thing.map.paths" width="100%" height="480px"></leaflet>
+      <ul ng-show="thing.tags" class="list-inline">
+        <li ng-repeat="tag in thing.tags">
+          <span class="badge">{{tag}}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
