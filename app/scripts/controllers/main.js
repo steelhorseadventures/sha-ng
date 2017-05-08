@@ -16,6 +16,7 @@ angular.module('steelhorseadventuresApp')
           $scope.things.push({
             title: thingList[i].title,
             countries: thingList[i].countries,
+            pictures: thingList[i].pictures,
             waypoints: thingList[i].waypoints,
             summary: thingList[i].description,
             map: thingList[i].map,

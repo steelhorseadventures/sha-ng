@@ -12,6 +12,11 @@
           <img src="images/flags/{{country.code}}.png" alt="flag of {{country.code}}" class="pull-left rounded" style="margin-right: 10px;" />
         </a>
       </div>
+      <div class="clearfix">
+        <a href="{{picture}}=h1080" ng-repeat="picture in thing.pictures">
+          <img src="{{picture}}=h180" class="pull-left rounded" style="margin-right: 10px; margin-bottom: 10px;" />
+        </a>
+      </div>
       <p ng-show="thing.summary && (thing.title != thing.summary)">
         {{thing.summary}}
       </p>
