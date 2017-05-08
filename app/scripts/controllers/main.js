@@ -15,6 +15,7 @@ angular.module('steelhorseadventuresApp')
         if (!(thingList[i].hide) && !!(thingList[i].id)) {
           $scope.things.push({
             title: thingList[i].title,
+            countries: thingList[i].countries,
             waypoints: thingList[i].waypoints,
             summary: thingList[i].description,
             map: thingList[i].map,

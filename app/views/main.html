@@ -7,6 +7,11 @@
       <h5>
         {{thing.map.distance.value / 1000 | number:1}} kilometres / {{thing.map.distance.value * 0.000621371 | number:1}} miles
       </h4>
+      <div class="clearfix" style="margin-bottom: 10px;">
+        <a href="{{country.url}}" ng-repeat="country in thing.countries">
+          <img src="images/flags/{{country.code}}.png" alt="flag of {{country.code}}" class="pull-left rounded" style="margin-right: 10px;" />
+        </a>
+      </div>
       <p ng-show="thing.summary && (thing.title != thing.summary)">
         {{thing.summary}}
       </p>
