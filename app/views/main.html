@@ -51,3 +51,14 @@
   </div>
   <hr />
 </div>
+
+<h3>The Whole Route (or rather, what I've recorded so far)</h3>
+<h4>
+  {{allTheDistance / 1000 | number:1}} kilometres / {{allTheDistance * 0.000621371 | number:1}} miles
+</h4>
+<div class="clearfix" style="margin-bottom: 10px;">
+  <a href="{{country.url}}" ng-repeat="country in allTheCountries | unique: 'code'">
+    <img src="images/flags/{{country.code}}.png" alt="flag of {{country.code}}" class="pull-left rounded" style="margin-right: 10px;" />
+  </a>
+</div>
+<leaflet id="theBigPicture" lf-center="{lat:40.113142,lng:1.302247,zoom:4}" paths="theWholeRoute" width="100%" height="480px"></leaflet>

@@ -10,10 +10,15 @@
 angular.module('steelhorseadventuresApp')
   .controller('MainCtrl', function ($scope, thingApi) {
     $scope.things = [];
-
+    var theWholeRoute = [];
+    var allTheCountries = [];
+    $scope.allTheDistance = 0;
     thingApi.query({org: 'steelhorseadventures', repo: 'sha-content', file: 'things.json'}, function (thingList) {
       for (var i in thingList) {
         if (!(thingList[i].hide) && !!(thingList[i].id)) {
+          theWholeRoute.push.apply(theWholeRoute, thingList[i].map.paths.p1.latlngs);
+          allTheCountries.push.apply(allTheCountries, thingList[i].countries);
+          $scope.allTheDistance += thingList[i].map.distance.value;
           $scope.things.push({
             title: thingList[i].title,
             header_picture: thingList[i].header_picture,
@@ -36,4 +41,6 @@ angular.module('steelhorseadventuresApp')
         }
       }
     });
+    $scope.allTheCountries = allTheCountries;
+    $scope.theWholeRoute = {p1:{color:'#33adff',weight:5,latlngs:theWholeRoute}};
   });
