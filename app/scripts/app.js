@@ -17,6 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui-leaflet',
+    'ngMapAutocomplete'
   ])
   .config(function ($routeProvider) {
     $routeProvider

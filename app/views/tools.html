@@ -1,1 +1,21 @@
-<p>This is the tools view.</p>
+<h1>route geocoder</h1>
+
+<div class="form-group" ng-repeat="point in waypoints">
+  <button type="button" class="btn btn-secondary btn-xs pull-right" ng-show="$last" ng-click="waypoints.splice(waypoints.length - 1, 0, {})">+</button>
+  <button type="button" class="btn btn-secondary btn-xs pull-right" ng-show="!$first && !$last" ng-click="waypoints.splice($index, 1)">-</button>
+  <label>
+    {{($first ? 'from' : ($last ? 'to' : 'waypoint'))}}:
+    <span ng-show="point.response.geometry">
+      {{point.response.geometry.location.lat() + ',' + point.response.geometry.location.lng()}}
+    </span>
+  </label>
+  <input type="text" class="form-control" ng-map-autocomplete ng-model="point.lookup" details="point.response" />
+</div>
+
+<div class="form-group clearfix" style="padding-bottom: 10px;">
+  <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="getRoute(waypoints)">get route</button>
+</div>
+
+<leaflet lf-center="route.center" paths="route.paths" width="100%" height="480px"></leaflet>
+
+<pre>{{summary | json}}</pre>
