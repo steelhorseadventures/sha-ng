@@ -52,10 +52,17 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#!/">
+            <a class="navbar-brand" href="#!/home">
               <img src="images/bike24.png" alt="steel horse" />
               steel horse adventures
             </a>
+          </div>
+          <div class="collapse navbar-collapse pull-right" id="js-navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li ng-repeat="route in ['home', 'tools']">
+                <a href="#!/{{route}}" detect-active-tab="1">{{route}}</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -104,6 +111,8 @@
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/services/gist.js"></script>
         <script src="scripts/services/thingapi.js"></script>
+        <script src="scripts/controllers/tools.js"></script>
+        <script src="scripts/directives/detectactivetab.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -20,7 +20,7 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/home', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
@@ -30,8 +30,13 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/tools', {
+        templateUrl: 'views/tools.html',
+        controller: 'ToolsCtrl',
+        controllerAs: 'tools'
+      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/home'
       });
   }).filter('unique', function() {
     return function (arr, field) {
