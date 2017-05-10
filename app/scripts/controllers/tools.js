@@ -90,6 +90,7 @@ angular.module('steelhorseadventuresApp')
     };
     $scope.getRoute = function(waypoints) {
       if (waypoints.every(containsResponse)){
+        $scope.loading = true;
         var params = {
           travelMode: 'DRIVING',
           origin: waypoints[0].response.geometry.location.lat() + ',' + waypoints[0].response.geometry.location.lng(),
@@ -97,6 +98,7 @@ angular.module('steelhorseadventuresApp')
           waypoints: ((waypoints.length > 2) ? waypoints.slice(1,-1).map(function(p) {return p.response.geometry.location.lat() + ',' + p.response.geometry.location.lng();}).join('|') : '')
         };
         routeApi.get(params, function (routeResponse) {
+          $scope.loading = false;
           var bounds = routeResponse.routes[0].bounds;
           var leg = routeResponse.routes[0].legs[0];
           var polyline = routeResponse.routes[0].overview_polyline.points;

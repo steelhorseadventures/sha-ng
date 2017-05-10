@@ -1,4 +1,5 @@
 <h1>route geocoder</h1>
+<p>aka: drawing rude pictures on maps using nothing but your geographic intellect</p>
 
 <div class="form-group" ng-repeat="point in waypoints">
   <button type="button" class="btn btn-secondary btn-xs pull-right" ng-show="$last" ng-click="waypoints.splice(waypoints.length - 1, 0, {})">+</button>
@@ -15,7 +16,10 @@
 <div class="form-group clearfix" style="padding-bottom: 10px;">
   <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="getRoute(waypoints)">get route</button>
 </div>
-
+<div ng-show="loading" class="spinner">
+  <div class="cube1"></div>
+  <div class="cube2"></div>
+</div>
 <leaflet lf-center="route.center" paths="route.paths" width="100%" height="480px"></leaflet>
 
 <pre>{{summary | json}}</pre>
