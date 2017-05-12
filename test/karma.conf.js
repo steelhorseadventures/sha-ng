@@ -33,6 +33,8 @@ module.exports = function(config) {
       'bower_components/leaflet/dist/leaflet-src.js',
       'bower_components/ui-leaflet/dist/ui-leaflet.js',
       'bower_components/ng-map-autocomplete/src/ng-map-autocomplete.js',
+      'bower_components/hammerjs/hammer.js',
+      'bower_components/ng-image-gallery/dist/ng-image-gallery.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

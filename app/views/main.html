@@ -38,9 +38,7 @@
         <leaflet id="{{thing.id}}" ng-show="thing.map" lf-center="thing.map.centre" paths="thing.map.paths" width="100%" height="480px"></leaflet>
       </div>
       <div class="clearfix">
-        <a href="{{picture}}=h1080" ng-repeat="picture in thing.pictures">
-          <img src="{{picture}}=h180" class="pull-left rounded" style="margin-right: 10px; margin-bottom: 10px;" />
-        </a>
+        <ng-image-gallery images="thing.gallery" img-anim="fadeup"></ng-image-gallery>
       </div>
       <ul ng-show="thing.tags" class="list-inline">
         <li ng-repeat="tag in thing.tags">

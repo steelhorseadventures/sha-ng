@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui-leaflet',
-    'ngMapAutocomplete'
+    'ngMapAutocomplete',
+    'thatisuday.ng-image-gallery'
   ])
   .config(function ($routeProvider) {
     $routeProvider

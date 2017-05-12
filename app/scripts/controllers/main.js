@@ -23,7 +23,7 @@ angular.module('steelhorseadventuresApp')
             title: thingList[i].title,
             header_picture: thingList[i].header_picture,
             countries: thingList[i].countries,
-            pictures: thingList[i].pictures,
+            gallery: thingList[i].pictures.map(function(url,i){return{id:i,url:url+'=h1080',thumbUrl:url+'=h80'};}),
             waypoints: thingList[i].waypoints,
             summary: thingList[i].description,
             map: thingList[i].map,
